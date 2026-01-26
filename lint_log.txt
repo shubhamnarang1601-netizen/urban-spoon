@@ -1,0 +1,70 @@
+﻿
+> ranisa-boutique@0.1.0 lint
+> eslint
+
+
+D:\Rani Sa Boutique\ranisa-boutique\app\about\page.tsx
+  100:46  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  100:55  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Rani Sa Boutique\ranisa-boutique\app\admin\layout.tsx
+  25:5  error  React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render  react-hooks/rules-of-hooks
+
+D:\Rani Sa Boutique\ranisa-boutique\app\admin\page.tsx
+  118:39  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  118:51  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  121:31  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  121:47  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+D:\Rani Sa Boutique\ranisa-boutique\app\admin\products\add\page.tsx
+  94:19  warning  'productId' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+D:\Rani Sa Boutique\ranisa-boutique\app\contact\page.tsx
+   46:26  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  115:67  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  122:46  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  202:40  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  207:34  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Rani Sa Boutique\ranisa-boutique\app\login\page.tsx
+  115:32  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Rani Sa Boutique\ranisa-boutique\components\cart\CartProvider.tsx
+  26:17  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+D:\Rani Sa Boutique\ranisa-boutique\components\cart\CartProvider.tsx:26:17
+  24 |         if (savedCart) {
+  25 |             try {
+> 26 |                 setCart(JSON.parse(savedCart));
+     |                 ^^^^^^^ Avoid calling setState() directly within an effect
+  27 |             } catch (error) {
+  28 |                 console.error('Failed to load cart:', error);
+  29 |             }  react-hooks/set-state-in-effect
+
+D:\Rani Sa Boutique\ranisa-boutique\lib\firebase\auth.ts
+   7:13  warning  'FirebaseUser' is defined but never used  @typescript-eslint/no-unused-vars
+  46:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  76:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  84:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Rani Sa Boutique\ranisa-boutique\lib\firebase\firestore.ts
+  16:5  warning  'DocumentData' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Rani Sa Boutique\ranisa-boutique\lib\firebase\storage.ts
+  24:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  43:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  57:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Rani Sa Boutique\ranisa-boutique\lib\utils.ts
+  67:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  67:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Γ£û 26 problems (23 errors, 3 warnings)
+
