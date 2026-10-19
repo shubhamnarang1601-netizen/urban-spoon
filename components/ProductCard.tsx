@@ -1,9 +1,12 @@
 import Link from "next/link";
+import WishButton from "./WishButton";
 import { discountPct, inr, type Product } from "@/lib/products";
 
 export default function ProductCard({ p }: { p: Product }) {
   return (
-    <Link href={`/product/${p.slug}`} className="card">
+    <div className="card-wrap">
+      <WishButton slug={p.slug} />
+      <Link href={`/product/${p.slug}`} className="card">
       <div className="card-img" style={{ background: `linear-gradient(160deg, ${p.tone[0]}, ${p.tone[1]})` }}>
         {p.isNew && <span className="tag">New</span>}
         <span className="tag sale">{discountPct(p)}% off</span>
@@ -15,6 +18,7 @@ export default function ProductCard({ p }: { p: Product }) {
           <strong>{inr(p.price)}</strong> <s>{inr(p.mrp)}</s>
         </p>
       </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

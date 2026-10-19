@@ -26,6 +26,9 @@ export default function Header() {
         <Link href="/" className="logo">
           Ranisa <small>Boutique</small>
         </Link>
+        <Link href="/wishlist" className="cart-link" aria-label="Wishlist">
+          ♡
+        </Link>
         <Link href="/cart" className="cart-link" aria-label="Cart">
           Bag <span className="badge">{count}</span>
         </Link>

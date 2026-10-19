@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Quicksand } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/CartProvider";
+import { WishlistProvider } from "@/components/WishlistProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -18,9 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${poppins.variable} ${quicksand.variable}`}>
       <body>
         <CartProvider>
+          <WishlistProvider>
           <Header />
           <main>{children}</main>
           <Footer />
+        </WishlistProvider>
         </CartProvider>
       </body>
     </html>

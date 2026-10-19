@@ -43,7 +43,7 @@ export default function CartPage() {
         <p>Subtotal <span>{inr(subtotal)}</span></p>
         {discount > 0 && <p>10% order discount <span>−{inr(discount)}</span></p>}
         <p className="total">Total <span>{inr(subtotal - discount)}</span></p>
-        <button className="btn" disabled>Checkout (coming soon)</button>
+        <Link href="/checkout" className="btn">Checkout</Link>
       </div>
     </div>
   );
