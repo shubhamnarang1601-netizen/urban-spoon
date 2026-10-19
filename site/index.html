@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ranisa Boutique — New In</title>
+<meta name="description" content="New arrivals in ethnic wear: anarkalis, kurta sets, sharara sets, co-ords and indo-western styles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="announce">Free shipping across India on orders above ₹3,000 · New styles dispatch every Monday</div>
+
+<header class="site-header">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <a class="logo" href="#">Ranisa<span>Boutique</span></a>
+  <nav class="main-nav" id="mainNav">
+    <a href="#" class="active">New In</a>
+    <a href="#" data-cat="Anarkali">Anarkali</a>
+    <a href="#" data-cat="Kurta Sets">Kurta Sets</a>
+    <a href="#" data-cat="Sharara Sets">Sharara Sets</a>
+    <a href="#" data-cat="Co-Ords">Co-Ords</a>
+    <a href="#" data-cat="Indo Western">Indo Western</a>
+    <a href="#" id="saleLink">Sale</a>
+  </nav>
+  <div class="header-actions">
+    <input id="search" type="search" placeholder="Search" aria-label="Search products">
+    <button class="icon-btn" id="wishBtn" aria-label="Wishlist">♡ <b id="wishCount">0</b></button>
+    <button class="icon-btn" id="cartBtn" aria-label="Cart">Bag <b id="cartCount">0</b></button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <p class="eyebrow">Just landed</p>
+  <h1>New In</h1>
+  <p>Fresh festive edits, everyday kurta sets and statement co-ords — added every week.</p>
+</section>
+
+<div class="chips" id="chips"></div>
+
+<main class="layout">
+  <aside class="filters" id="filters">
+    <div class="filters-head"><h2>Filter</h2><button class="link" id="clear">Clear all</button><button class="icon-btn close-filters" id="closeFilters">✕</button></div>
+    <details open><summary>Category</summary><div id="fCat"></div></details>
+    <details open><summary>Size</summary><div id="fSize" class="sizes"></div></details>
+    <details open><summary>Price</summary>
+      <div id="fPrice"></div>
+    </details>
+    <details open><summary>Availability</summary>
+      <label class="check"><input type="checkbox" id="inStock"> In stock only</label>
+    </details>
+  </aside>
+
+  <section class="results">
+    <div class="toolbar">
+      <button class="btn-outline" id="openFilters">Filters</button>
+      <span id="count" aria-live="polite"></span>
+      <label>Sort
+        <select id="sort">
+          <option value="new">Newest</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </label>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No styles match your filters.</p>
+  </section>
+</main>
+
+<section class="perks">
+  <div><b>Easy WhatsApp ordering</b><span>Chat with our stylists for fit help</span></div>
+  <div><b>Pan-India delivery</b><span>Shipped in 2–4 working days</span></div>
+  <div><b>Custom sizing</b><span>Sizes 34–48 &amp; made-to-measure</span></div>
+  <div><b>Secure payments</b><span>UPI, cards, COD</span></div>
+</section>
+
+<footer class="site-footer">
+  <div>
+    <a class="logo" href="#">Ranisa<span>Boutique</span></a>
+    <p>Handpicked ethnic and indo-western wear for every celebration.</p>
+  </div>
+  <div><h3>Shop</h3><a href="#">New In</a><a href="#">Anarkali</a><a href="#">Sharara Sets</a><a href="#">Sale</a></div>
+  <div><h3>Help</h3><a href="#">Size guide</a><a href="#">Shipping</a><a href="#">Returns policy</a><a href="#">Contact</a></div>
+  <form id="news"><h3>Stay in the loop</h3><div class="news-row"><input type="email" required placeholder="Your email" aria-label="Email"><button class="btn">Join</button></div><small id="newsMsg"></small></form>
+  <p class="copy">© 2026 Ranisa Boutique. Demo storefront — products are sample data.</p>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Cart">
+  <div class="drawer-head"><h2>Your bag</h2><button class="icon-btn" id="closeCart">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="drawer-foot"><div class="total"><span>Subtotal</span><b id="subtotal">₹0</b></div><button class="btn full">Checkout</button></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
