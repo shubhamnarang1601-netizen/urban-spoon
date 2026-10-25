@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jewelry — Fine Jewellery in 3D</title>
+<meta name="description" content="Jewelry — an immersive 3D fine jewellery experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body data-page="home">
+<canvas id="bg3d"></canvas><div class="vignette"></div>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal">Maison de haute joaillerie · Est. 1987</p>
+      <h1 data-split>Light, <em class="gold-text">set</em><br>in gold.</h1>
+      <p class="lead reveal" data-delay=".2">Every piece is a small cathedral of light — sculpted by hand, then brought to life in three dimensions. Turn it. Touch it. Make it yours.</p>
+      <div class="ctas reveal" data-delay=".35">
+        <a class="btn solid" href="collections.html">Explore collections</a>
+        <a class="btn" href="atelier.html">Design your own</a>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <div class="marquee"><div class="track">
+    <span>Diamond</span><span>Ruby</span><span>Sapphire</span><span>Emerald</span><span>Amethyst</span><span>Platinum</span><span>Rose Gold</span>
+    <span>Diamond</span><span>Ruby</span><span>Sapphire</span><span>Emerald</span><span>Amethyst</span><span>Platinum</span><span>Rose Gold</span>
+  </div></div>
+
+  <section class="panel" data-piece="gem" data-side="right">
+    <div class="wrap"><div class="copy">
+      <p class="eyebrow">01 — The stone</p>
+      <h2 data-split>Fifty-seven facets of pure fire.</h2>
+      <p class="lead reveal">Our cutters spend up to three weeks on a single brilliant, aligning each facet to bend light back toward the eye. Watch it dance as you scroll.</p>
+      <a class="btn reveal" href="story.html">How it's made</a>
+    </div></div>
+  </section>
+
+  <section class="panel" data-piece="necklace" data-side="left">
+    <div class="wrap"><div class="copy">
+      <p class="eyebrow">02 — The chain</p>
+      <h2 data-split>Links that drape like water.</h2>
+      <p class="lead reveal">Hand-polished 18-karat links, each one soldered and tested twice. Pendants that rest exactly where the collarbone catches the light.</p>
+      <a class="btn reveal" href="collections.html">Shop necklaces</a>
+    </div></div>
+  </section>
+
+  <section class="panel" data-piece="ring" data-side="right">
+    <div class="wrap"><div class="copy">
+      <p class="eyebrow">03 — The promise</p>
+      <h2 data-split>Made once. Worn forever.</h2>
+      <p class="lead reveal">Choose your metal, your stone and its carat in our live 3D atelier — and see exactly what you'll wear before we cast a single gram.</p>
+      <div class="stats reveal">
+        <div><b data-count="37" data-suffix="+">0</b><small>Years of craft</small></div>
+        <div><b data-count="1200" data-suffix="+">0</b><small>Unique designs</small></div>
+        <div><b data-count="57">0</b><small>Facets per brilliant</small></div>
+        <div><b data-count="100" data-suffix="%">0</b><small>Ethically sourced</small></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="cta-band" data-piece="ring" data-side="center">
+    <div class="wrap">
+      <p class="eyebrow reveal">Your move</p>
+      <h2 data-split>Design something unforgettable.</h2>
+      <a class="btn solid reveal" href="atelier.html">Enter the atelier</a>
+    </div>
+  </section>
+</main>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script type="module" src="js/home.js"></script>
+</body>
+</html>

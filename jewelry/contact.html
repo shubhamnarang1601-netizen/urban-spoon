@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Jewelry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body data-page="contact">
+<canvas id="bg3d"></canvas><div class="vignette"></div>
+<main>
+  <section class="page-hero wrap">
+    <p class="eyebrow reveal">Get in touch</p>
+    <h1 data-split>Let's make <em class="gold-text">something.</em></h1>
+    <p class="lead reveal">Book a private viewing, ask about a bespoke commission, or simply say hello.</p>
+  </section>
+  <section class="wrap contact-grid">
+    <div class="info">
+      <div class="reveal"><h3>The Atelier</h3><p>12 Gold Lane, Jaipur 302001<br>Mon – Sat · 10am – 7pm</p></div>
+      <div class="reveal"><h3>Write to us</h3><p>hello@jewelry.example<br>+91 00000 00000</p></div>
+      <div class="reveal"><h3>Bespoke commissions</h3><p>Start in our 3D atelier, save your design, and bring it to a consultation. Our artisans will take it from there.</p><a class="btn" style="margin-top:1.2rem" href="atelier.html">Open atelier</a></div>
+    </div>
+    <form class="glass reveal" id="form">
+      <div class="field"><input id="n" placeholder=" " required><label for="n">Your name</label></div>
+      <div class="field"><input id="e" type="email" placeholder=" " required><label for="e">Email</label></div>
+      <div class="field"><select id="s"><option>Private viewing</option><option>Bespoke commission</option><option>Repair &amp; care</option><option>Something else</option></select><label for="s">Enquiry</label></div>
+      <div class="field"><textarea id="m" placeholder=" " required></textarea><label for="m">Message</label></div>
+      <button class="btn solid" type="submit" style="justify-content:center">Send message</button>
+    </form>
+  </section>
+</main>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script type="module" src="js/contact.js"></script>
+</body>
+</html>
