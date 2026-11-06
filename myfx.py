@@ -194,5 +194,63 @@ def fx_dizzy(c, e):
         place(c, st, x, y, 1, 0, k, behind=math.sin(th) < 0)
 
 
+def _bursts(seed=5, n=14, dur=12.0):
+    r = random.Random(seed); out = []
+    for i in range(n):
+        out.append(dict(t0=r.uniform(-0.8, dur), x=r.uniform(0.05, 0.95), y=r.uniform(0.06, 0.45), R=r.uniform(0.18, 0.34),
+                        col=r.choice([(255, 170, 60), (255, 120, 40), (255, 215, 120), (255, 90, 60), (255, 240, 200)]), k=r.randint(40, 70), sd=r.random()))
+    return out
+
+
+@effect('diwali-night', 'swaps the background for a Diwali night sky with fireworks and a warm golden grade on you')
+def fx_diwali(c, e):
+    W, H = c.W, c.H
+    def base():
+        yy = np.linspace(0, 1, H, dtype=np.float32)[:, None, None]
+        top, bot = np.array([0.02, 0.02, 0.05]), np.array([0.16, 0.07, 0.03])
+        img = np.broadcast_to(top * (1 - yy) + bot * yy, (H, W, 3)).copy()
+        r = random.Random(2)
+        for i in range(40):  # warm bokeh lights near the horizon
+            x, y, rad = r.uniform(0, W), r.uniform(H * 0.55, H), r.uniform(W * 0.01, W * 0.04)
+            cv2.circle(img, (int(x), int(y)), int(rad), (1.0, r.uniform(0.55, 0.8), 0.25), -1)
+        img = cv2.GaussianBlur(img, (0, 0), W * 0.008)
+        return img
+    bg = cached(e, 'bg', base).copy()
+    bursts = cached(e, 'bursts', lambda: _bursts(dur=e.d + 1))
+    glow = np.zeros_like(bg)
+    for b in bursts:
+        a = c.lt - b['t0']
+        if a < 0 or a > 2.2: continue
+        if a < 0.35:  # rising rocket
+            y = H * (1.0 - (1.0 - b['y']) * (a / 0.35)); cv2.circle(glow, (int(W * b['x']), int(y)), max(2, int(W * 0.004)), (1, 0.85, 0.5), -1); continue
+        q = a - 0.35; rad = W * b['R'] * (1 - math.exp(-q * 3.2)); fadek = max(0.0, 1 - q / 1.85)
+        col = np.array(b['col']) / 255.0 * fadek; rr = random.Random(int(b['sd'] * 1000))
+        cx, cy = W * b['x'], H * b['y'] + q * q * H * 0.03
+        for j in range(b['k']):
+            th = j * 2 * math.pi / b['k'] + rr.uniform(-0.05, 0.05); L = rad * rr.uniform(0.85, 1.05)
+            x1, y1 = cx + L * math.cos(th), cy + L * math.sin(th) + q * H * 0.02
+            x0, y0 = cx + L * 0.12 * math.cos(th), cy + L * 0.12 * math.sin(th)
+            xm, ym = cx + L * 0.7 * math.cos(th), cy + L * 0.7 * math.sin(th)
+            cv2.line(glow, (int(x0), int(y0)), (int(xm), int(ym)), tuple(float(v) * 0.35 for v in col), max(1, int(W * 0.002)), cv2.LINE_AA)
+            x0, y0 = xm, ym
+            cv2.line(glow, (int(x0), int(y0)), (int(x1), int(y1)), tuple(float(v) for v in col), max(1, int(W * 0.003)), cv2.LINE_AA)
+            if rr.random() < 0.5: cv2.circle(glow, (int(x1), int(y1)), max(1, int(W * 0.0035)), tuple(float(min(1, v * 1.3)) for v in col), -1)
+    glow = glow + cv2.GaussianBlur(glow, (0, 0), W * 0.02) * 1.6
+    bg = np.clip(bg + glow, 0, 1)
+    # person: warm golden grade, slightly darker to sit in the night, plus a soft rim light from the fireworks
+    p = c.img * np.array([1.08, 0.95, 0.78]); p = np.clip(p * 0.92 + 0.02, 0, 1)
+    mm = c.m.copy()
+    pts = np.array([[0, H * 0.66], [W * 0.24, H * 0.66], [W * 0.3, H * 0.75], [W * 0.3, H], [0, H]], np.int32)
+    reg = np.zeros((H, W), np.uint8); cv2.fillPoly(reg, [pts], 1)
+    dark = cv2.dilate((c.img.mean(axis=2) < 0.13).astype(np.uint8), np.ones((9, 9), np.uint8))
+    mm[(reg > 0) & (dark > 0)] = 0; mm[int(H * 0.945):, :int(W * 0.5)] = 0
+    c.m = mm
+    m = cv2.GaussianBlur(c.m, (0, 0), 1.2)[..., None]
+    edge = np.clip(cv2.GaussianBlur(c.m, (0, 0), W * 0.012)[..., None] - m * 0.6, 0, 1)
+    out = bg * (1 - m) + p * m + edge * np.array([1.0, 0.6, 0.25]) * 0.35
+    yy, xx = np.ogrid[0:H, 0:W]; v = ((xx - W / 2) / (W * 0.75)) ** 2 + ((yy - H / 2) / (H * 0.75)) ** 2
+    c.img = np.clip(out * (1 - 0.45 * np.clip(v, 0, 1))[..., None], 0, 1)
+
+
 if __name__ == '__main__':
     fx.main()
